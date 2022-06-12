@@ -13,17 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import re_path as url,include
 from django.contrib import admin
-from django.urls import path
+# from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('news.urls')),
-    path('accounts/', include('django_registration.backends.one_step.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('logout/', auth_views.LogoutView.as_view(), {"next_page": '/'}),
+    url('admin/', admin.site.urls),
+    url(r'', include('news.urls')),
+    url('accounts/', include('django_registration.backends.one_step.urls')),
+    url('accounts/', include('django.contrib.auth.urls')),
+    url('logout/', auth_views.LogoutView.as_view(), {"next_page": '/'}),
     url('tinymce/', include('tinymce.urls')),
     
 ]
