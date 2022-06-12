@@ -1,4 +1,4 @@
-#!/home/moringa/Documents/PYTHON/The-Moringa-Tribune/venv/bin/python
+#!/home/bigbaby/Desktop/Python/Django/tribune/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

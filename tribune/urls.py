@@ -18,15 +18,16 @@ from django.contrib import admin
 # from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
+from rest_framework.authtoken.views import obtain_auth_token
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'', include('news.urls')),
-    url('accounts/', include('django_registration.backends.one_step.urls')),
-    url('accounts/', include('django.contrib.auth.urls')),
-    url('logout/', auth_views.LogoutView.as_view(), {"next_page": '/'}),
-    url('tinymce/', include('tinymce.urls')),
+    url(r'^api-token-auth/', obtain_auth_token),
+    url(r'accounts/', include('django_registration.backends.one_step.urls')),
+    url(r'accounts/', include('django.contrib.auth.urls')),
+    url(r'logout/', auth_views.LogoutView.as_view(), {"next_page": '/'}),
+    url(r'tinymce/', include('tinymce.urls')),
     
 ]
