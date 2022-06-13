@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'ajax/newsletter/', views.newsletter, name='newsletter'),
     url(r'api/merch/', views.MerchList.as_view()),
     url(r'api-token-auth/', obtain_auth_token),
-    url(r'api/merch/merch-id/<int:pk>/', views.MerchDescription.as_view()),
+    url(r'api/merch/merch-id/(?P<pk>[0-9]+)/$', views.MerchDescription.as_view()),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
 
